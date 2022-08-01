@@ -358,7 +358,7 @@ class Header {
             let navs = this.header.querySelectorAll('.navItem'), mayLen = 0, may = navs.item(0);
             getElement('.navBtn').classList.remove('hide');
             navs.forEach(item => {
-                if (item.classList.contains('search-header')) {
+                if (item.id === 'search-header') {
                     return;
                 }
                 let now = item, link = getElement('a', now);

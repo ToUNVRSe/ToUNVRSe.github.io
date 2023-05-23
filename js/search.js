@@ -1,1 +1,315 @@
-window.addEventListener("DOMContentLoaded",()=>{let e,t=!1,n=!1,r=!1;const o=config.root+"search.json",l=getElement("#search-input"),s=getElement("nav"),a=config.search.activeHolder,i=config.search.blurHolder,c=config.search.noResult,u=getElement(".search-popup");function d(){n=!0,fetch(o).then(e=>e.text()).then(n=>{t=!0,e=JSON.parse(n),!0===r&&E()}).catch(()=>n=!1)}function h(e,t,n){let r=e.length;if(0===r)return[];let o=0,l=[],s=[];for(n||(t=t.toLowerCase(),e=e.toLowerCase());(l=t.indexOf(e,o))>-1;)s.push({position:l,word:e}),o=l+r;return s}function g(e,t,n,r){let o=n[n.length-1],l=o.position,s=o.word,a=[],i=0;for(;l+s.length<=t&&0!==n.length;){s===r&&i++,a.push({position:l,length:s.length});let e=l+s.length;for(n.pop();0!==n.length&&(o=n[n.length-1],l=o.position,s=o.word,e>l);)n.pop()}return{hits:a,start:e,end:t,TextCount:i}}function p(e,t){let n="",r=t.start;return t.hits.forEach(t=>{n+=e.substring(r,t.position);let o=t.position+t.length;n+=`<nobr class="search-keyword">${e.substring(t.position,o)}</nobr>`,r=o}),n+=e.substring(r,t.end),n}function m(){document.querySelector(".up")&&document.querySelector(".closed")&&getElement(".navBtn").classList.remove("expanded"),getElement("#search-result").querySelectorAll("a").forEach(e=>e.setAttribute("tabindex",-1)),document.body.classList.remove("blur"),u.classList.remove("open")}function f(){document.body.classList.add("blur"),document.querySelector(".up")&&document.querySelector(".closed")&&getElement(".navBtn").classList.add("expanded"),getElement("#search-result").removeAttribute("tabindex"),u.classList.add("open"),!0===t?(u.innerHTML="<div id='search-result'></div>",document.getElementById("search-result").innerHTML=""):getElement("#search-result").innerHTML='<div id="loading"><div><p>Loading...</p></div></div>'}function E(){let n=l.value.trim().toLowerCase();if(!n.length)return l.placeholder=a,void m();if(f(),!1===t)return;let r=n.split(/[-\s]+/);r.length>1&&r.push(n);let o=[];n.length>0&&e.forEach(e=>{if(!e.title)return;let t=0,l=0,s=0,a=e.title.trim(),i=a.toLowerCase(),c=e.content?e.content.trim().replace(/<[^>]+>/g,""):"",u=c.toLowerCase(),d=decodeURIComponent(e.url).replace(/\/{2,}/g,"/"),m=[],f=[];if(r.forEach(e=>{let n=h(e,i,!1),r=h(e,u,!1);m=m.concat(n),f=f.concat(r),(n.length>0||r.length>0)&&t++,n.length>0&&l++,(n.length>0||r.length>0)&&s++}),m.length>0||f.length>0){[m,f].forEach(e=>{e.sort((e,t)=>t.position!==e.position?t.position-e.position:e.word.length-t.word.length)});let e=[],r=[];if(0!==m.length){let t=g(0,a.length,m,n);e.push(t)}let i=parseInt(config.top_n_per_article,10);i>=0&&(r=r.slice(0,i));let u="";if(0!==e.length?u+=`<a href="${d}" class="recent-post"><b class="search-result-title">${p(a,e[0])}</b>`:u+=`<a href="${d}" class="recent-post"><b class="search-result-title">${a}</b>`,null!==f&&0!==f.length){let e=f[f.length-1],t=e.position,r=e.word,o=t-20,l=t+80;o<0&&(o=0),l<t+r.length&&(l=t+r.length),l>c.length&&(l=c.length),u+=`<p class="search-result">${p(c,g(o,l,f,n))}...</p>`}else u+=`<p class="search-result">${c}...</p>`;u+="</a>",o.push({item:u,TextCount:t,TitleCount:l,ContentCount:s,id:o.length})}}),u.scroll({top:0,left:0});let s=getElement("#search-result");if(0===o.length)s.innerHTML=`<div id="no-result"><p>${format(c,`<b>${l.value}</b>`)}</p></div>`;else{o.sort((e,t)=>e.TextCount!==t.TextCount?t.TextCount-e.TextCount:e.TitleCount!==t.TitleCount?t.TitleCount-e.TitleCount:e.ContentCount!==t.ContentCount?t.ContentCount-e.ContentCount:t.id-e.id);let e="";o.forEach(t=>{e+=t.item}),s.innerHTML=e}"undefined"!=typeof pjax&&pjax.refresh(s)}function v(){s.classList.add("search"),header.closeAll(),document.querySelector(".up")&&(getElement("main").style.pointerEvents="none"),l.placeholder=a,t||(n||d(),r=!0)}function L(){s.classList.contains("search")&&(s.classList.remove("search"),m(),l.value="",l.placeholder=i,document.removeEventListener("mouseup",L),r=!1,getElement("main").style.pointerEvents="",l.blur())}config.search.preload&&d(),l.addEventListener("keypress",e=>{13===e.key&&E()}),l.addEventListener("keyup",()=>{s.classList.add("search"),E()}),l.addEventListener("focus",()=>{v()}),l.addEventListener("blur",e=>{e.relatedTarget&&e.relatedTarget.parentElement===getElement("#search-result")||L()}),u.addEventListener("focusout",e=>{(!e.relatedTarget||e.relatedTarget!==l&&e.relatedTarget.parentElement!==getElement("#search-result"))&&L()}),document.addEventListener("keyup",e=>{"Escape"===e.key?L():"f"!==e.key||["INPUT","TEXTAREA"].includes(e.target.tagName)||(document.querySelector(".up")||(getElement(".navBtn").classList.remove("hide"),header.open()),v(),l.focus())}),document.addEventListener("click",e=>{"A"!==e.target.tagName&&"A"!==e.target.parentElement.tagName||L()})});
+window.addEventListener('DOMContentLoaded', () => {
+  let fetched = false, fetching = false, waiting = false
+  let datas
+  const path = config.root + 'search.json'
+  const input = getElement('#search-input')
+  const nav = getElement('nav')
+  const activeHolder = config.search.activeHolder
+  const blurHolder = config.search.blurHolder
+  const noResult = config.search.noResult
+  const popup = getElement('.search-popup')
+  function fetechData() {
+    fetching = true
+    fetch(path)
+      .then(response => response.text())
+      .then(res => {
+        fetched = true
+        datas = JSON.parse(res)
+        if (waiting === true) {
+          inputEventFunction()
+        }
+      }).catch(() => fetching = false)
+  }
+  if (config.search.preload) {
+    fetechData()
+  }
+  function getIndexByWord(word, text, caseSensitive) {
+    let wordLen = word.length
+    if (wordLen === 0) return []
+    let startPosition = 0
+    let position = []
+    let index = []
+    if (!caseSensitive) {
+      text = text.toLowerCase()
+      word = word.toLowerCase()
+    }
+    while ((position = text.indexOf(word, startPosition)) > -1) {
+      index.push({
+        position: position,
+        word: word
+      })
+      startPosition = position + wordLen
+    }
+    return index
+  }
+  function mergeIntoSlice(start, end, index, searchText) {
+    let item = index[index.length - 1]
+    let position = item.position
+    let word = item.word
+    let hits = []
+    let searchTextCountInSlice = 0
+    while (position + word.length <= end && index.length !== 0) {
+      if (word === searchText) {
+        searchTextCountInSlice++
+      }
+      hits.push({
+        position: position,
+        length: word.length
+      })
+      let wordEnd = position + word.length
+      index.pop()
+      while (index.length !== 0) {
+        item = index[index.length - 1]
+        position = item.position
+        word = item.word
+        if (wordEnd > position) {
+          index.pop()
+        } else {
+          break
+        }
+      }
+    }
+    return {
+      hits: hits,
+      start: start,
+      end: end,
+      TextCount: searchTextCountInSlice
+    }
+  }
+  function highlightKeyword(text, slice) {
+    let result = ''
+    let prevEnd = slice.start
+    slice.hits.forEach(hit => {
+      result += text.substring(prevEnd, hit.position)
+      let end = hit.position + hit.length
+      result += `<nobr class="search-keyword">${text.substring(hit.position, end)}</nobr>`
+      prevEnd = end
+    })
+    result += text.substring(prevEnd, slice.end)
+    return result
+  }
+  function inLoading() {
+    getElement('#search-result').innerHTML = '<div id="loading"><div><p>Loading...</p></div></div>'
+  }
+  function onPopupClose() {
+    if (document.querySelector('.up') && document.querySelector('.closed')) {
+      getElement('.navBtn').classList.remove('expanded')
+    }
+    getElement('#search-result').querySelectorAll('a').
+      forEach((item) => item.setAttribute('tabindex', -1))
+    document.body.classList.remove('blur')
+    popup.classList.remove('open')
+  }
+  function proceedSearch() {
+    document.body.classList.add('blur')
+    if (document.querySelector('.up') && document.querySelector('.closed')) {
+      getElement('.navBtn').classList.add('expanded')
+    }
+    getElement('#search-result').removeAttribute('tabindex')
+    popup.classList.add('open')
+    if (fetched === true) {
+      popup.innerHTML = "<div id='search-result'></div>"
+      document.getElementById('search-result').innerHTML = ''
+    } else {
+      inLoading()
+    }
+  }
+  function inputEventFunction() {
+    let searchText = input.value.trim().toLowerCase()
+    if (!searchText.length) {
+      input.placeholder = activeHolder
+      onPopupClose()
+      return
+    }
+    proceedSearch()
+    if (fetched === false) {
+      return
+    }
+    let keywords = searchText.split(/[-\s]+/)
+    if (keywords.length > 1) {
+      keywords.push(searchText)
+    }
+    let resultItems = []
+    if (searchText.length > 0) {
+      datas.forEach(data => {
+        if (!data.title) {
+          return
+        }
+        let TextCount = 0, TitleCount = 0, ContentCount = 0
+        let title = data.title.trim()
+        let titleInLowerCase = title.toLowerCase()
+        let content = data.content ? data.content.trim().replace(/<[^>]+>/g, '') : ''
+        let contentInLowerCase = content.toLowerCase()
+        let articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/')
+        let indexOfTitle = []
+        let indexOfContent = []
+        keywords.forEach(keyword => {
+          let hitInTitle = getIndexByWord(keyword, titleInLowerCase, false)
+          let hitInContent = getIndexByWord(keyword, contentInLowerCase, false)
+          indexOfTitle = indexOfTitle.concat(hitInTitle)
+          indexOfContent = indexOfContent.concat(hitInContent)
+          if (hitInTitle.length > 0 || hitInContent.length > 0) {
+            TextCount++
+          }
+          if (hitInTitle.length > 0) {
+            TitleCount++
+          }
+          if (hitInTitle.length > 0 || hitInContent.length > 0) {
+            ContentCount++
+          }
+        })
+        if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+          [indexOfTitle, indexOfContent].forEach(index => {
+            index.sort((itemLeft, itemRight) => {
+              if (itemRight.position !== itemLeft.position) {
+                return itemRight.position - itemLeft.position
+              }
+              return itemLeft.word.length - itemRight.word.length
+            })
+          })
+
+          let slicesOfTitle = []
+          let slicesOfContent = []
+          if (indexOfTitle.length !== 0) {
+            let tmp = mergeIntoSlice(0, title.length, indexOfTitle, searchText)
+            slicesOfTitle.push(tmp)
+          }
+          let upperBound = parseInt(config.top_n_per_article, 10)
+          if (upperBound >= 0) {
+            slicesOfContent = slicesOfContent.slice(0, upperBound)
+          }
+          let resultItem = ''
+          if (slicesOfTitle.length !== 0) {
+            resultItem += `<a href="${articleUrl}" class="recent-post"><b class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</b>`
+          } else {
+            resultItem += `<a href="${articleUrl}" class="recent-post"><b class="search-result-title">${title}</b>`
+          }
+          if (indexOfContent !== null && indexOfContent.length !== 0) {
+            let item = indexOfContent[indexOfContent.length - 1]
+            let position = item.position
+            let word = item.word
+            let start = position - 20
+            let end = position + 80
+            if (start < 0) {
+              start = 0
+            }
+            if (end < position + word.length) {
+              end = position + word.length
+            }
+            if (end > content.length) {
+              end = content.length
+            }
+            let tmp = mergeIntoSlice(start, end, indexOfContent, searchText)
+            resultItem += `<p class="search-result">${highlightKeyword(content, tmp)}...</p>`
+          } else {
+            resultItem += `<p class="search-result">${content}...</p>`
+          }
+          resultItem += '</a>'
+          resultItems.push({
+            item: resultItem,
+            TextCount: TextCount,
+            TitleCount: TitleCount,
+            ContentCount: ContentCount,
+            id: resultItems.length
+          })
+        }
+      })
+    }
+    popup.scroll({ top: 0, left: 0 })
+    let resultList = getElement('#search-result')
+    if (resultItems.length === 0) {
+      resultList.innerHTML =
+        `<div id="no-result"><p>${format(noResult, `<b>${input.value}</b>`)}</p></div>`
+    } else {
+      resultItems.sort((Left, Right) => {
+        if (Left.TextCount !== Right.TextCount) {
+          return Right.TextCount - Left.TextCount
+        } else if (Left.TitleCount !== Right.TitleCount) {
+          return Right.TitleCount - Left.TitleCount
+        } else if (Left.ContentCount !== Right.ContentCount) {
+          return Right.ContentCount - Left.ContentCount
+        }
+        return Right.id - Left.id
+      })
+      let searchResultList = ""
+      resultItems.forEach(result => {
+        searchResultList += result.item
+      })
+      resultList.innerHTML = searchResultList
+    }
+    if (typeof pjax !== 'undefined') {
+      pjax.refresh(resultList)
+    }
+  }
+  input.addEventListener('keypress', event => {
+    if (event.key === 13) {
+      inputEventFunction()
+    }
+  })
+  function StartSearch() {
+    nav.classList.add('search')
+    header.closeAll()
+    if (document.querySelector('.up')) {
+      getElement('main').style.pointerEvents = 'none'
+    }
+    input.placeholder = activeHolder
+    if (!fetched) {
+      if (!fetching) {
+        fetechData()
+      }
+      waiting = true
+    }
+  }
+  function EscapeSearch() {
+    if (!nav.classList.contains('search')) {
+      return
+    }
+    nav.classList.remove('search')
+    onPopupClose()
+    input.value = ''
+    input.placeholder = blurHolder
+    document.removeEventListener('mouseup', EscapeSearch)
+    waiting = false
+    getElement('main').style.pointerEvents = ''
+    input.blur()
+  }
+  input.addEventListener('keyup', () => {
+    nav.classList.add('search')
+    inputEventFunction()
+  })
+  input.addEventListener('focus', () => {
+    StartSearch()
+  })
+  input.addEventListener('blur', event => {
+    if (!event.relatedTarget ||
+      event.relatedTarget.parentElement !== getElement('#search-result')) {
+      EscapeSearch()
+    }
+  })
+  popup.addEventListener('focusout', event => {
+    if (!event.relatedTarget ||
+      (event.relatedTarget !== input &&
+        event.relatedTarget.parentElement !== getElement('#search-result'))) {
+      EscapeSearch()
+    }
+  })
+  document.addEventListener('keyup', event => {
+    if (event.key === 'Escape') {
+      EscapeSearch()
+    } else if (event.key === 'f' && 
+      !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
+      if (!document.querySelector('.up')) {
+        getElement('.navBtn').classList.remove('hide')
+        header.open()
+      }
+      StartSearch()
+      input.focus()
+    }
+  })
+  document.addEventListener('click', event => {
+    if (event.target.tagName === 'A' ||
+      event.target.parentElement.tagName === 'A') {
+      EscapeSearch()
+    }
+  })
+})

@@ -722,11 +722,27 @@ class pjaxSupport {
                 }
             }, 600, this.timestamp);
         };
+        this.fail = () => {
+            setTimeout((time) => {
+                if (this.timestamp !== time) {
+                    return;
+                }
+                this.start(0);
+                this.loading.classList.add('fail');
+                setTimeout((time) => {
+                    if (this.timestamp === time) {
+                        this.loading.style.opacity = '0';
+                        this.loading.classList.remove('fail');
+                    }
+                }, 600, this.timestamp);
+            }, 600, this.timestamp);
+        };
         document.addEventListener('pjax:send', () => {
             if (getElement('main').classList.contains('up')) {
                 scrolls.slideDown();
             }
             this.loading.classList.add('reset');
+            this.loading.classList.remove('fail');
             this.start(0);
             setTimeout((time) => {
                 if (this.timestamp !== time) {
@@ -743,6 +759,7 @@ class pjaxSupport {
             }, 0, this.timestamp);
         });
         document.addEventListener('pjax:start', this.loaded);
+        document.addEventListener('pjax:error', this.fail);
     }
 }
 try {
@@ -806,6 +823,30 @@ class Pair {
         this.button = second;
     }
 }
+class Selectors {
+    constructor(elements, active) {
+        this.elements = [];
+        this.changeTo = (item) => {
+            if (item === this.nowActive) {
+                return;
+            }
+            this.nowActive.comment.style.display = 'none';
+            this.nowActive.button.classList.remove('active');
+            item.comment.style.display = '';
+            item.button.classList.add('active');
+            this.nowActive = item;
+        };
+        this.elements = elements;
+        this.nowActive = this.elements[active];
+        this.elements.forEach((item) => item.comment.style.display = 'none');
+        this.nowActive = this.elements[0];
+        for (let i of this.elements) {
+            i.button.addEventListener('click', () => this.changeTo(i));
+        }
+        this.nowActive.comment.style.display = '';
+        this.nowActive.button.classList.add('active');
+    }
+}
 class Comments {
     constructor() {
         this.search = ["valine", "gitalk", "waline"];
@@ -821,8 +862,9 @@ class Comments {
             this.nowActive = item;
         };
         this.setHTML = () => {
-            if (!document.querySelector('#comments'))
+            if (!document.querySelector('#comments>.selector')) {
                 return;
+            }
             this.elements = [];
             this.search.forEach((item) => {
                 try {

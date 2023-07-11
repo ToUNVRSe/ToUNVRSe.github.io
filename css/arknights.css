@@ -2286,10 +2286,6 @@ main:not(.up) .search #search-header input {
 .admonition.adm-failure {
   --ex-color: var(--theme-adm-failure);
 }
-.i-detail {
-  mask-image: var(--adm-icon-detail);
-  -webkit-mask-image: var(--adm-icon-detail);
-}
 .admonition.adm-detail {
   --ex-color: var(--theme-adm-detail);
 }

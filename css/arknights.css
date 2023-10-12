@@ -818,7 +818,7 @@ h6 {
     width: 150px;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1912px) {
   header {
     width: 310px;
   }
@@ -1191,7 +1191,7 @@ nav li {
     position: relative;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1912px) {
   article {
     width: calc(95% - 630px);
   }
@@ -1266,7 +1266,7 @@ nav li {
     margin-left: 10px;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1912px) {
   aside {
     margin: 0 2.5%;
   }
@@ -1282,6 +1282,9 @@ nav li {
   }
   .navItem {
     padding-left: 1.2em;
+  }
+  .navItem .navItemTitle {
+    padding-right: 5px;
   }
   .navBlock {
     text-align: right;
@@ -1325,7 +1328,7 @@ nav li {
     padding-left: 2.25em;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1912px) {
   .navItem {
     padding-left: 5.25em;
   }
@@ -1762,6 +1765,7 @@ main:not(.up) .search #search-header input {
 }
 .search .navItem:not(#search-header) {
   transform: translateX(-100%);
+  pointer-events: none;
 }
 .search-popup {
   left: 0;

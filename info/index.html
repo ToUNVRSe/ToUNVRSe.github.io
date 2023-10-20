@@ -129,10 +129,10 @@ mjx-container[display="true"] + br {
   display: none;
 }
 </style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>INFO</h1></div><hr><div id="post-content"><p>留言板也在这里。</p>
-<p>~~tips:你知道吗，这个日志是后来补上的。~~</p>
+<p><del>tips:你知道吗，这个日志是后来补上的。</del></p>
 <span class="hide"><object><p>而且这个大聪明把自己的 commit history 搞丢了。</p></object></span>
-<h2>PR 0</h2>
-<h3>P0</h3>
+<h2 id="pr-0">PR 0</h2>
+<h3 id="p0">P0</h3>
 <p>首先是这样的，我想折腾，于是决定逛一下 github。</p>
 <span class="hide"><object><p>实际情况是这个家伙的 git npm 前端全是那后面学的。</p></object></span>
 <p>然后想要搭一个 blog。</p>
@@ -141,7 +141,7 @@ mjx-container[display="true"] + br {
 Valine 的时候，在胡乱翻在侧边的时候发现了 <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights/">hexo-theme-arknights</a>。</p>
 <span class="hide"><object><p>好家伙 DNA 测试器了属于是。</p></object></span>
 <span class="hide"><object><p>然后直接跳进大坑里。</p></object></span>
-<h4>P0.5</h4>
+<h4 id="p0.5">P0.5</h4>
 <p>然后这个依赖项就恶心起来了，主要是那个三年没更的 hexo-renderer-sass
 导致的。 <span class="hide"><object><p>这是后来实在用不了了才知道的。</p></object></span></p>
 <p>首先就是 fsevents 明明是个 Windows 下不需要的东西，然后非要装，然后就
@@ -149,7 +149,7 @@ ERROR，最后加了个 <code>--force</code>
 搞定了，结果换了台机子又不行了，因为 npm 版本太高不能
 <code>--force</code>，只能手动降级。</p>
 <p>总之看着一大堆版本不对的依赖项挺糟心的。</p>
-<h3>P1</h3>
+<h3 id="p1">P1</h3>
 <p>搬东西。</p>
 <p>因为黑历史太多所以选择性的搬了一些比较近的。</p>
 <p>然后被 mermaid 搞一晚上，最后发现是直接引入的 <code>mermaid.js</code>
@@ -160,7 +160,7 @@ fence 就全部锅掉了。</p>
 <span class="hide"><object><p>后来又有人问了相同的问题 emm。</p></object></span>
 <p>然后数学公式又炸掉了，主要是 Typora 与博客园都支持的
 <code>align</code> 在 hexo 这里不支持了。</p>
-<h3>P2</h3>
+<h3 id="p2">P2</h3>
 <p>首先就是对着样式一顿魔改，因为我看起来实在是很不舒服。</p>
 <span class="hide"><object><p>所以你到底选了个什么玩意。</p></object></span>
 <span class="hide"><object><p>我也不知道啊啊喂。</p></object></span>
@@ -186,7 +186,7 @@ fence 就全部锅掉了。</p>
 <p>总所周知，有些东西用完就会上瘾，所以现在 <code>shadow</code>
 一大堆。</p>
 <p>总之还不错。 <span class="hide"><object><p>At least on my browser.</p></object></span></p>
-<h3>P3</h3>
+<h3 id="p3">P3</h3>
 <p>虽然跑过来中转了 <a target="_blank" rel="noopener" href="https://valine.js.org/">Valine</a>，但因为
 LeanCloud 强制实名于是就弃了。 <span class="hide"><object><p>大型用完就撤现场。</p></object></span></p>
 <p>gitalk 的配置倒还好整，唯一一个诡异的锅是
@@ -195,8 +195,8 @@ LeanCloud 强制实名于是就弃了。 <span class="hide"><object><p>大型用
 <p>然后再小小改了一下 <code>gitalk.js</code> 搞到本地。</p>
 <p>但是还是在这上面花了很长时间因为想交 PR。</p>
 <p>被字符串搞自闭了最后决定将锅丢给用户。 <span class="hide"><object><p>只要多加几个引号，一切都会好起来的。</p></object></span></p>
-<h2>PR 1</h2>
-<h3>P0</h3>
+<h2 id="pr-1">PR 1</h2>
+<h3 id="p0-1">P0</h3>
 <p>首先就是，不要用 pandoc 做渲染，不然侧边栏就彻底坏掉了。</p>
 <p>虽然原来动态还是坏的，跟 Yue_plus
 协调了一下修好了，但是我觉得不好看（</p>
@@ -204,7 +204,7 @@ LeanCloud 强制实名于是就弃了。 <span class="hide"><object><p>大型用
 那样的。</p>
 <p>因为 Yue_plus 写的 TS 于是跑去学了学 TS
 并假装自己会了，总之看起来是写出来了也没什么 bug。</p>
-<h3>P1</h3>
+<h3 id="p1-1">P1</h3>
 <p>又换了台机子（指机房）于是发现 hexo-renderer-sass
 用不了了，在经过两天的搜索之后发现是其依赖项 node-sass
 的版本太低，然后不支持 node.js 的新版本。</p>
@@ -212,7 +212,7 @@ LeanCloud 强制实名于是就弃了。 <span class="hide"><object><p>大型用
 没动但是毕竟名字不一样，然后直接魔改进 node_modules
 但是好像哪里不太对劲。</p>
 <p>最后发现了 hexo-renderer-dartsass 直接装就完事了。</p>
-<h3>P2</h3>
+<h3 id="p2-1">P2</h3>
 <p>嗯，搜索。</p>
 <span class="hide"><object><p>草绳为什么在别人计划里我要写啊？</p></object></span>
 <span class="hide"><object><p>想交 PR 啊，那没事了。</p></object></span>
@@ -236,7 +236,7 @@ hexo-generator-searchdb，并搞了个 NexT 作为参考，然后开始对着<a 
 <p>更要命的是这东西不加载还会影响字体文件，然后整个页面看起来就很崩。</p>
 <p>改了改选项暂时是把大小压下去了，但是这个优先级的问题还没解决。</p>
 <span class="hide"><object><p>UPD：然而之后我把赋值写成了 <code>==</code>，并一天后才发现。</p></object></span>
-<h3>P3</h3>
+<h3 id="p3-1">P3</h3>
 <p>开始做代码复制和折叠什么的，做了大概可能也许应改有 5h.</p>
 <p>用 JS 搭框架与 CSS 调的很快。</p>
 <p>然后开始做核心功能 <span class="hide"><object><p>真正有用的功能</p></object></span> copy，一开始想参考 <a target="_blank" rel="noopener" href="https://ouuan.github.io">ouuan</a>
@@ -251,10 +251,10 @@ DOM 标记一行，而是直接 <code>&lt;br&gt;</code>）。</p>
 <span class="hide"><object><p>emm 这线段树有这么像平衡树吗？</p></object></span>
 <span class="hide"><object><p>所以你 PR 什么时候交？</p></object></span>
 <p>然后发现附加 SASS 需要下划线前缀不然会被编译掉，改了改了。</p>
-<h3>P4</h3>
+<h3 id="p4">P4</h3>
 <p>不知道为什么各种 minify 都没有完全 work 的，最后把 <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-neat">hexo-neat</a> 与 NexT 家的 <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-optimize">hexo-optimize</a>
 混合起来了，效果还行。</p>
-<h4>关于空格</h4>
+<h4 id="关于空格">关于空格</h4>
 <div class="admonition expand-box adm-warning fold">
         <div class="ex-header">
             <i class="i-status"></i>
@@ -264,12 +264,13 @@ DOM 标记一行，而是直接 <code>&lt;br&gt;</code>）。</p>
         <div class="ex-content"><p><a target="_blank" rel="noopener" href="https://github.com/kangax/html-minifier">html-minifier</a>
 必须要开：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs json">collapseWhitespace<span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>conservativeCollapse<span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br></code></pre></td></tr></table></figure>
-<p>不然 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.488ex;" xmlns="http://www.w3.org/2000/svg" width="5.788ex" height="2.108ex" role="img" focusable="false" viewBox="0 -716.3 2558.3 931.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="4C" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q48 680 182 680Q324 680 348 683H360V637H333Q273 637 258 635T233 622L232 342V129Q232 57 237 52Q243 47 313 47Q384 47 410 53Q470 70 498 110T536 221Q536 226 537 238T540 261T542 272T562 273H582V268Q580 265 568 137T554 5V0H25V46H58Q100 47 109 49T128 61V622Z"></path></g><g data-mml-node="mspace" transform="translate(625,0)"></g><g data-mml-node="mpadded" transform="translate(300,0)"><g transform="translate(0,210)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mstyle" transform="scale(0.707)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="41" d="M255 0Q240 3 140 3Q48 3 39 0H32V46H47Q119 49 139 88Q140 91 192 245T295 553T348 708Q351 716 366 716H376Q396 715 400 709Q402 707 508 390L617 67Q624 54 636 51T687 46H717V0H708Q699 3 581 3Q458 3 437 0H427V46H440Q510 46 510 64Q510 66 486 138L462 209H229L209 150Q189 91 189 85Q189 72 209 59T259 46H264V0H255ZM447 255L345 557L244 256Q244 255 345 255H447Z"></path></g></g></g></g></g></g><g data-mml-node="mspace" transform="translate(830.3,0)"></g><g data-mml-node="mi" transform="translate(660.3,0)"><path data-c="54" d="M36 443Q37 448 46 558T55 671V677H666V671Q667 666 676 556T685 443V437H645V443Q645 445 642 478T631 544T610 593Q593 614 555 625Q534 630 478 630H451H443Q417 630 414 618Q413 616 413 339V63Q420 53 439 50T528 46H558V0H545L361 3Q186 1 177 0H164V46H194Q264 46 283 49T309 63V339V550Q309 620 304 625T271 630H244H224Q154 630 119 601Q101 585 93 554T81 486T76 443V437H36V443Z"></path></g><g data-mml-node="mspace" transform="translate(1382.3,0)"></g><g data-mml-node="mpadded" transform="translate(1242.3,0)"><g transform="translate(0,-215.5)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="45" d="M128 619Q121 626 117 628T101 631T58 634H25V680H597V676Q599 670 611 560T625 444V440H585V444Q584 447 582 465Q578 500 570 526T553 571T528 601T498 619T457 629T411 633T353 634Q266 634 251 633T233 622Q233 622 233 621Q232 619 232 497V376H286Q359 378 377 385Q413 401 416 469Q416 471 416 473V493H456V213H416V233Q415 268 408 288T383 317T349 328T297 330Q290 330 286 330H232V196V114Q232 57 237 52Q243 47 289 47H340H391Q428 47 452 50T505 62T552 92T584 146Q594 172 599 200T607 247T612 270V273H652V270Q651 267 632 137T610 3V0H25V46H58Q100 47 109 49T128 61V619Z"></path></g></g></g></g><g data-mml-node="mspace" transform="translate(1923.3,0)"></g><g data-mml-node="mi" transform="translate(1808.3,0)"><path data-c="58" d="M270 0Q252 3 141 3Q46 3 31 0H23V46H40Q129 50 161 88Q165 94 244 216T324 339Q324 341 235 480T143 622Q133 631 119 634T57 637H37V683H46Q64 680 172 680Q297 680 318 683H329V637H324Q307 637 286 632T263 621Q263 618 322 525T384 431Q385 431 437 511T489 593Q490 595 490 599Q490 611 477 622T436 637H428V683H437Q455 680 566 680Q661 680 676 683H684V637H667Q585 634 551 599Q548 596 478 491Q412 388 412 387Q412 385 514 225T620 62Q628 53 642 50T695 46H726V0H717Q699 3 591 3Q466 3 445 0H434V46H440Q454 46 476 51T499 64Q499 67 463 124T390 238L353 295L350 292Q348 290 343 283T331 265T312 236T286 195Q219 88 218 84Q218 70 234 59T272 46H280V0H270Z"></path></g></g></g></g></svg></mjx-container> 与文本之间的空格会被干掉。</p>
+<p>不然 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.488ex;" xmlns="http://www.w3.org/2000/svg" width="5.788ex" height="2.108ex" role="img" focusable="false" viewBox="0 -716.3 2558.3 931.8"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="4C" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q48 680 182 680Q324 680 348 683H360V637H333Q273 637 258 635T233 622L232 342V129Q232 57 237 52Q243 47 313 47Q384 47 410 53Q470 70 498 110T536 221Q536 226 537 238T540 261T542 272T562 273H582V268Q580 265 568 137T554 5V0H25V46H58Q100 47 109 49T128 61V622Z"></path></g><g data-mml-node="mspace" transform="translate(625,0)"></g><g data-mml-node="mpadded" transform="translate(300,0)"><g transform="translate(0,210)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mstyle" transform="scale(0.707)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="41" d="M255 0Q240 3 140 3Q48 3 39 0H32V46H47Q119 49 139 88Q140 91 192 245T295 553T348 708Q351 716 366 716H376Q396 715 400 709Q402 707 508 390L617 67Q624 54 636 51T687 46H717V0H708Q699 3 581 3Q458 3 437 0H427V46H440Q510 46 510 64Q510 66 486 138L462 209H229L209 150Q189 91 189 85Q189 72 209 59T259 46H264V0H255ZM447 255L345 557L244 256Q244 255 345 255H447Z"></path></g></g></g></g></g></g><g data-mml-node="mspace" transform="translate(830.3,0)"></g><g data-mml-node="mi" transform="translate(660.3,0)"><path data-c="54" d="M36 443Q37 448 46 558T55 671V677H666V671Q667 666 676 556T685 443V437H645V443Q645 445 642 478T631 544T610 593Q593 614 555 625Q534 630 478 630H451H443Q417 630 414 618Q413 616 413 339V63Q420 53 439 50T528 46H558V0H545L361 3Q186 1 177 0H164V46H194Q264 46 283 49T309 63V339V550Q309 620 304 625T271 630H244H224Q154 630 119 601Q101 585 93 554T81 486T76 443V437H36V443Z"></path></g><g data-mml-node="mspace" transform="translate(1382.3,0)"></g><g data-mml-node="mpadded" transform="translate(1242.3,0)"><g transform="translate(0,-215.5)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="45" d="M128 619Q121 626 117 628T101 631T58 634H25V680H597V676Q599 670 611 560T625 444V440H585V444Q584 447 582 465Q578 500 570 526T553 571T528 601T498 619T457 629T411 633T353 634Q266 634 251 633T233 622Q233 622 233 621Q232 619 232 497V376H286Q359 378 377 385Q413 401 416 469Q416 471 416 473V493H456V213H416V233Q415 268 408 288T383 317T349 328T297 330Q290 330 286 330H232V196V114Q232 57 237 52Q243 47 289 47H340H391Q428 47 452 50T505 62T552 92T584 146Q594 172 599 200T607 247T612 270V273H652V270Q651 267 632 137T610 3V0H25V46H58Q100 47 109 49T128 61V619Z"></path></g></g></g></g><g data-mml-node="mspace" transform="translate(1923.3,0)"></g><g data-mml-node="mi" transform="translate(1808.3,0)"><path data-c="58" d="M270 0Q252 3 141 3Q46 3 31 0H23V46H40Q129 50 161 88Q165 94 244 216T324 339Q324 341 235 480T143 622Q133 631 119 634T57 637H37V683H46Q64 680 172 680Q297 680 318 683H329V637H324Q307 637 286 632T263 621Q263 618 322 525T384 431Q385 431 437 511T489 593Q490 595 490 599Q490 611 477 622T436 637H428V683H437Q455 680 566 680Q661 680 676 683H684V637H667Q585 634 551 599Q548 596 478 491Q412 388 412 387Q412 385 514 225T620 62Q628 53 642 50T695 46H726V0H717Q699 3 591 3Q466 3 445 0H434V46H440Q454 46 476 51T499 64Q499 67 463 124T390 238L353 295L350 292Q348 290 343 283T331 265T312 236T286 195Q219 88 218 84Q218 70 234 59T272 46H280V0H270Z"></path></g></g></g></g></svg></mjx-container></span>
+与文本之间的空格会被干掉。</p>
 </div>
         </div>
 <p>然后因为写了一篇带有 mermaid 的 post 又开始跟 code fence 较劲。</p>
-<p>~~然后发现之前的 mermaid
-炸掉了，仔细检查发现新版本每一行的末尾必须加分号，之前可以不加。~~</p>
+<p><del>然后发现之前的 mermaid
+炸掉了，仔细检查发现新版本每一行的末尾必须加分号，之前可以不加。</del></p>
 <p>草绳又不用了，玩不明白了属于是。</p>
 <p>但是因为预览问题还是决定把 code fence 格式 mermaid 搞出来。</p>
 <p>搜索文档无果，最后决定在 JS 里面把 mermaid 过滤出来，再把
@@ -280,7 +281,7 @@ DOM 标记一行，而是直接 <code>&lt;br&gt;</code>）。</p>
 的初始化把自动加载去掉，然后加一个监听等页面加载完了再启动。</p>
 <span class="hide"><object><p>话说不是应该等 <code>arknights.js</code>
 初始化结束了就启动么，这样会不会被搜索数据的加载炸掉啊。</p></object></span>
-<h4>P4.5</h4>
+<h4 id="p4.5">P4.5</h4>
 <span class="hide"><object><p>因为是同一天，所以放在 .5 里面。</p></object></span>
 <p>我们考虑实现一个<a target="_blank" rel="noopener" href="https://ak.hypergryph.com/">鹰式的鼠标指针</a>，然后通过对着官网一顿乱删可以把具体的
 DOM 取出来。</p>
@@ -312,14 +313,14 @@ DOM 取出来。</p>
 <p>再加两个 <code>addEventListener()</code> 判一手在不在
 <code>&lt;header&gt;</code> 里，总算是没有什么大毛病了。</p>
 <span class="hide"><object><p>也许吧，At least on my browser.</p></object></span>
-<h4>P4.75</h4>
+<h4 id="p4.75">P4.75</h4>
 <p>第二天发现写出来的东西性能太渣了。</p>
 <p>主要是那个动态添加 <code>addEventListener()</code>
 的计时器太慢了导致的。</p>
 <p>一顿 BDFS 发现了 <code>MutationObserver</code>
 这个对象可以监听页面修改，写了一发把计时器去了，效果极佳。</p>
 <p>顺带把其他两个计时器改成动态启停的，现在性能应该还可以。</p>
-<h3>P5</h3>
+<h3 id="p5">P5</h3>
 <p>我把在 2021/2/4 被 Yue_plus 干掉的 hexo-blog-encrypt 请回来了。</p>
 <p>主要就是修 toc 的问题，这里吐槽一下 hexo-blog-encrypt 不能设置 toc 的
 div id 导致命名看起来很蠢。</p>
@@ -327,43 +328,43 @@ div id 导致命名看起来很蠢。</p>
 <p>胡乱装了个 hexo-admonition 然后发现这东西其实挺拉跨的啥也没有。</p>
 <p>所以又写了一会 TS 和 SASS 总算好了一点。</p>
 <p>具体的颜色以后再调吧。</p>
-<h3>P6</h3>
+<h3 id="p6">P6</h3>
 <p>发现 CSS
 （尤其是滚动）性能出大问题，又开始了一晚上的面向文档编程。</p>
 <p>然后页面需要重构，把滚动条移到最外层元素上，然后调定位调死人。</p>
 <p>整了一个 Pjax 不知道能不能令观感好一些，反正我感觉还行。</p>
 <p>虽然加载还是等半天就是了。</p>
-<h3>P7</h3>
+<h3 id="p7">P7</h3>
 <p>好耶被催着交 PR。</p>
 <p>首先就是把本地一大堆魔改过的代码换成可以公开使用的，尤其是一些奇怪的附加项。</p>
 <p>然后把一些新功能加个选项啥的。</p>
 <p>然后修 bug，一大堆我不用的东西因为改动直接就坏掉了。</p>
 <p>然后别人测试出 bug 继续修。</p>
 <p>顺带的把加密的问题搞定了，不知道为什么不能不显示预览。</p>
-<h2>PR 2</h2>
-<h3>P0</h3>
+<h2 id="pr-2">PR 2</h2>
+<h3 id="p0-2">P0</h3>
 <p>Pjax 确实是个天坑。</p>
 <p>发现 Pjax 与各评论系统并不兼容，只好自己搞搞兼容层。</p>
 <p>gitalk 的问题在于 Pjax 是先替换 DOM 再 <code>pushState()</code>
 的，所以在重新初始化 gitalk 的时候并不能把新的 URL 搞上去。</p>
 <p>那么我们加一个 <code>pjax::success</code>
 的监听器进行初始化就行。</p>
-<h3>P1</h3>
+<h3 id="p1-2">P1</h3>
 <p>有人要字数统计是吧。</p>
 <p>正好我写过直接往上加。</p>
-<h3>P2</h3>
+<h3 id="p2-2">P2</h3>
 <p>Valine 的问题并没有解决，在数小时寻找到底哪里异步无果之后发现：</p>
 <p>https://github.com/xCss/Valine/issues/138</p>
 <p>解决了。</p>
-<h2>PR 3</h2>
-<h3>P0</h3>
+<h2 id="pr-3">PR 3</h2>
+<h3 id="p0-3">P0</h3>
 <p><code>&lt;header&gt;</code> 的 issue 越来越多了
-~~我该怎么办？~~，决定重写。</p>
+<del>我该怎么办？</del>，决定重写。</p>
 <p>上角的官网搞了一发，然后开始糊 CSS，发现 <code>transform</code>
 非常有趣。</p>
 <p>然后小写一手 JS 顺带的把鼠标特效优化了一下，用新标准重写
 JS，主要是几个 <code>foreach</code> 看起来很行。</p>
-<h3>P1</h3>
+<h3 id="p1-3">P1</h3>
 <p>继续回去倒腾 CSS。</p>
 <p>主要在写新 <code>&lt;header&gt;</code>
 顺带把滚动条什么的优化了一发。</p>
@@ -380,75 +381,79 @@ JS，主要是几个 <code>foreach</code> 看起来很行。</p>
 里面写分类讨论垃圾代码了。</p>
 <p>顺带的把 <code>&lt;header&gt;</code>
 的高度问题解决了，可以自适应了。</p>
-<h3>P2</h3>
+<h3 id="p2-3">P2</h3>
 <p>修 Pjax 行为，虽然我不太确定自己修了什么。</p>
 <p>不知道以后还会不会再修。</p>
-<h3>P3</h3>
+<h3 id="p3-2">P3</h3>
 <p>给搜索整点动画，一开始利用 CSS
 的计算机制整了一个动画（通过一些属性不适用 <code>transition</code>
 而一些属性使用来完成），后来规范了 CSS 代码之后就废了。</p>
 <p>还是要写点正规东西。</p>
 <p>折腾 <code>animation</code> 大概是写出来了。</p>
 <p>让 JS 那边配合了一下。</p>
-<h3>P4</h3>
+<h3 id="p4-1">P4</h3>
 <p>移动端胡乱写写，感觉还行。</p>
 <p>然后炸了，<code>pointer-event</code>
 导致了一堆问题，其中有一个一直遗留到了 PR 之后才发现。</p>
-<h2>PR 4</h2>
-<p>~~啊好像三个月过去了啊，那我来补档一下吧。~~</p>
-<h3>P0</h3>
+<h2 id="pr-4">PR 4</h2>
+<p><del>啊好像三个月过去了啊，那我来补档一下吧。</del></p>
+<h3 id="p0-4">P0</h3>
 <p>为 <code>&lt;header&gt;</code>
 的“当前在哪里”的高亮多写了一点逻辑，主要是 <code>tag</code> 和
 <code>categories</code> 都放在 <code>archives</code>
 里面，所以把这样的链接塞进 <code>attribute</code> 里面了。</p>
-<h3>P1</h3>
+<h3 id="p1-4">P1</h3>
 <p>继续修复万年修复不好的 Pjax，并决定加一些切换动画。</p>
 <p>本来想写一些花里胡哨的东西来模仿单页面应用的，后面发现 Pjax 提供的
 API 简单得并不能做出来。</p>
-<p>~~你等我哪天自己写一个就有了。~~</p>
+<p><del>你等我哪天自己写一个就有了。</del></p>
 <p>由于动画在进行的时候会加一堆 <code>position: absolute</code>
 所以给一堆的块定了长宽，总算是不会出现奇怪的抖动了。</p>
-<p>~~吐了，调试这个东西巨阴间。~~</p>
+<p><del>吐了，调试这个东西巨阴间。</del></p>
 <p>然后重新做了加载条动画。</p>
-<h3>P2</h3>
+<h3 id="p2-4">P2</h3>
 <p>继续写 TS，把文件做了一下拆分，这样就不用总是
 <kbd>Ctrl</kbd>+<kbd>F</kbd> 修 Bug 了。</p>
 <p>把搜索生成器内置了，避免无聊的设置问题。</p>
 <p>然后做了一些格式化，Sublime-LSP 挺顶的。</p>
-<h3>P3</h3>
+<h3 id="p3-3">P3</h3>
 <p>进行移动端 <code>&lt;header&gt;</code> 重写，增加了很多滚动交互。</p>
-<p>尤其是吸收群内 @大赵同学 的想法顶部做了很多东西。</p>
+<p>尤其是吸收群内 <span class="citation" data-cites="大赵同学">@大赵同学</span> 的想法顶部做了很多东西。</p>
 <p>CSS 比较难搞。</p>
 <p>期间做了 Firefox 的一些工作。</p>
-<h2>PR 5</h2>
+<h2 id="pr-5">PR 5</h2>
 <p>这一次的起因是因为<a href="../post/AT_birthday0410_X/">这篇题解</a>。</p>
-<h3>P0</h3>
+<h3 id="p0-5">P0</h3>
 <p>粗体斜体以及链接都有颜色，然后成功导致了冲突。</p>
 <p>通过技法大概能绝大多时候避免了吧。</p>
-<h3>P1</h3>
+<h3 id="p1-5">P1</h3>
 <p>见过最神奇的 Bug。</p>
-<p><img src="Bug.png" alt="MD 怎么会和 JS 冲突呢，事实就是这样小编也很惊讶"></p>
+<figure>
+<img src="Bug.png" alt="MD 怎么会和 JS 冲突呢，事实就是这样小编也很惊讶">
+<figcaption aria-hidden="true">MD 怎么会和 JS
+冲突呢，事实就是这样小编也很惊讶</figcaption>
+</figure>
 <p>这是因为在以上跟乱码没什么区别的压缩表中出现了 <code>$&amp;</code>
 的字符组合，然后 <code>$</code> 在 JS
 的正则中身兼要职反正总之不知道为什么就是寄了。</p>
 <p>溜了溜了，滚回前端方案去了。</p>
-<h3>P2</h3>
+<h3 id="p2-5">P2</h3>
 <p>又看到（我为什么要说“又”）<a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights/issues/78">Issues
 78</a>，想想顺手写了吧。</p>
 <p>主要就是让 Pug 来递归展开，然后 CSS 干活就行了。</p>
 <p>移动端由于不能用 <code>hover</code> 再写一点 TS 就完事。</p>
 <p>顺带修了一个遗留很久了的历史问题，虽然其实一般没什么影响。</p>
-<h2>2022/11/8</h2>
+<h2 id="section">2022/11/8</h2>
 <p>哇哦，上次编辑是在 7 月份，现在已经……11 月了。</p>
 <span class="hide"><object><p>咕这算了。</p></object></span>
 <p>总之修了很多 bug。</p>
-<h2>2023/2/1</h2>
+<h2 id="section-1">2023/2/1</h2>
 <p>前面忘了，去年，后面忘了。</p>
 <p>i18n 大概做好了。</p>
 <p>亮色模式在做了。</p>
-<h2>2023/5/9</h2>
+<h2 id="section-2">2023/5/9</h2>
 <p>社交链接完成，修复了一个很久的 bug。</p>
-<h2>2023/7/9</h2>
+<h2 id="section-3">2023/7/9</h2>
 <p>加入了：</p>
 <div class="admonition expand-box adm-note fold">
         <div class="ex-header">
@@ -543,9 +548,9 @@ API 简单得并不能做出来。</p>
 <p>鼠标-&gt;<span class="hide"><object><p>被隐藏的内容</p></object></span>&lt;-鼠标</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs plain">{% note %}<br>测试<br>{% endnote %}<br><br>{% note 记录 %}<br>标题<br>{% endnote %}<br><br>{% note 记录 open %}<br>默认打开<br>{% endnote %}<br><br>{% note 记录 #142847 %}<br>换颜色<br>{% endnote %}<br><br>{% note 记录 #142847 open %}<br>换颜色并默认打开<br>{% endnote %}<br><br>{% note 记录 open #142847 %}<br>后两个参数的顺序可以换！<br>{% endnote %}<br><br>{% warning 警告 %}<br>测试<br>{% endwarning %}<br><br>{% success 成功 %}<br>测试<br>{% endsuccess %}<br><br>{% failure 失败 %}<br>测试<br>{% endfailure %}<br><br>{% detail 细节 open %}<br>一个展开框的空模板！<br>{% enddetail %}<br><br>鼠标-&gt;{% hide 被隐藏的内容%}&lt;-鼠标<br></code></pre></td></tr></table></figure>
 <p>Tab 在咕咕了。</p>
-<h2>2023/7/10</h2>
+<h2 id="section-4">2023/7/10</h2>
 <p>脑溢血，<code>ad-</code> 的前缀命名被 AdBlock 拦截了。</p>
-<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>那之后，或仍然</p></div></div><div id="aside-block"><div id="toc-div"><h1>INDEX</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">P0.5</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P4</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">关于空格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">P4.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">P4.75</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">PR 5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">P2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">2022&#x2F;11&#x2F;8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">2023&#x2F;2&#x2F;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">2023&#x2F;5&#x2F;9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">2023&#x2F;7&#x2F;9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">2023&#x2F;7&#x2F;10</span></a></li></ol></div></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+<div id="paginator"></div></div><div id="post-footer"></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>那之后，或仍然</p></div></div><div id="aside-block"><div id="toc-div"><h1>INDEX</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-0"><span class="toc-text">PR 0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0"><span class="toc-text">P0</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p0.5"><span class="toc-text">P0.5</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p3"><span class="toc-text">P3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-1"><span class="toc-text">PR 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0-1"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-1"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2-1"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p3-1"><span class="toc-text">P3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p4"><span class="toc-text">P4</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%A9%BA%E6%A0%BC"><span class="toc-text">关于空格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p4.5"><span class="toc-text">P4.5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p4.75"><span class="toc-text">P4.75</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p5"><span class="toc-text">P5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p6"><span class="toc-text">P6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p7"><span class="toc-text">P7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-2"><span class="toc-text">PR 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0-2"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-2"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2-2"><span class="toc-text">P2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-3"><span class="toc-text">PR 3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0-3"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-3"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2-3"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p3-2"><span class="toc-text">P3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p4-1"><span class="toc-text">P4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-4"><span class="toc-text">PR 4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0-4"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-4"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2-4"><span class="toc-text">P2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p3-3"><span class="toc-text">P3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pr-5"><span class="toc-text">PR 5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p0-5"><span class="toc-text">P0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p1-5"><span class="toc-text">P1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p2-5"><span class="toc-text">P2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section"><span class="toc-text">2022&#x2F;11&#x2F;8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section-1"><span class="toc-text">2023&#x2F;2&#x2F;1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section-2"><span class="toc-text">2023&#x2F;5&#x2F;9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section-3"><span class="toc-text">2023&#x2F;7&#x2F;9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section-4"><span class="toc-text">2023&#x2F;7&#x2F;10</span></a></li></ol></div></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/encrypt/hbe.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
  clientID: '59256fb9d7fe0048c078',
  clientSecret: '147295a3adaea9532bd16d54b1dc9c964b5aefa7',
  repo: 'ToUNVRSe.github.io',

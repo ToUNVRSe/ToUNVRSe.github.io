@@ -3301,6 +3301,10 @@ article .recent-excerpt p {
   overflow-x: hidden;
   border: unset;
 }
+.highlight table {
+  display: block;
+  overflow: auto;
+}
 .code-title {
   color: var(--theme-text-light);
   flex-grow: 1;

@@ -10,10 +10,17 @@
   font-family: 'JetBrains Mono';
   src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
 }
-</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
  document.documentElement.setAttribute('theme-mode', 'light')
 if (window.localStorage.getItem('theme-mode') === 'dark')
- document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
  --light-background: url('/img/bk.jpg');
  --theme-encrypt-confirm: '确认'
@@ -49,7 +56,32 @@ document.addEventListener("pjax:complete", reset);document.addEventListener('pja
  "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
   bszTag.texts(a),
   bszTag.shows()
-}));reset()})</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
+ clientID: '59256fb9d7fe0048c078',
+ clientSecret: '147295a3adaea9532bd16d54b1dc9c964b5aefa7',
+ repo: 'ToUNVRSe.github.io',
+ owner: 'ToUNVRSe',
+ admin: ['ToUNVRSe'],
+ distractionFreeMode: false,
+ id: location.pathname
+});
+if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -161,8 +193,33 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>螺旋式上升</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-02-24T08:08:52.000Z" id="date"> 2024-02-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-02-24T08:23:29.474Z" id="updated"> 2024-02-24</time></div></span><br><span>Word Count: <div class="control">123</div></span><br><span>Read Time: <div class="control">1 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><p>就没啥，今天发现 chrome 121 支持了 CSS Scrollbars 系列属性，看起来没啥，那么问题是什么呢？</p>
-<p>CSS Scrollbars 会无条件覆盖 ::-webkit-scrollbar 伪类属性，然后众所周知，CSS Scrollbars 表现力被 ::-webkit-scrollbar 完爆。</p>
-<p>也许是可以通过 <span class="citation" data-cites="support">@support</span> 搞定的，但是 stylus 又抽风无法编译。理论上来说 <span class="citation" data-cites="css">@css</span> 可以用，但是在里面使用 <span class="citation" data-cites="supports">@supports</span> 会在某个别的时候挂掉。</p>
-<p>好消息，样式统一了，坏消息，不好看。</p>
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>螺旋式上升</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-02-23T16:00:00.000Z" id="date"> 2024-02-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-02T12:29:25.765Z" id="updated"> 2024-10-02</time></div></span><br><span>Word Count: <div class="control">288</div></span><br><span>Read Time: <div class="control">1 min</div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><p>曾经这个博客的子标题是“而万物理论永不存在，而它终将归尽于无限”。</p>
+<p>过去不远的某天改成了“那之后，或仍然”。不知道大家知不知道呢？</p>
+<p>不知道也无所谓啦，因为“那之后”来了。</p>
+<p>曾经几个月在写鲜花，或许也有为了缓解这一天的到来吧。</p>
+<p>那么，在这告别的交界处，我还剩下些什么呢？</p>
+<blockquote>
+<p>Say GoodBye</p>
+<p>Say GoodBye</p>
+<p>前前后后</p>
+<p>迂迂回回地试探</p>
+<p>Say GoodBye</p>
+<p>Say GoodBye</p>
+<p>昂首阔步</p>
+<p>不留一丝遗憾</p>
+</blockquote>
+<p>如果可以的话，我想唱给你们听啊。</p>
+<blockquote>
+<p>当迷途的人看到灯火的时候</p>
+<p>总是逃不过光阴无情的嘲弄</p>
+<p>真假之间似乎没有界限</p>
+<p>所以我掩藏不了我的畏怯</p>
+<p>甜苦之间多少美丽诺言</p>
+<p>总叫我幽幽整理我的感觉</p>
+</blockquote>
+<p>很遗憾，那么便如此吧。</p>
+<hr>
+<p>2024/10/2 “世事无常”更新：</p>
+<p>本来这篇是在凌晨的写的，拥有 4/6 发布，4/5 最后编辑的象征性时间，但是详见<a href="/post/NothinImpossible">世事无常</a>，遗憾。</p>
+<p>还是遗憾是我的基调啊。</p>
 <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/AfterThat/">← Next 那之后</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/ChongQing/">城市记·重庆 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

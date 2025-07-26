@@ -10,7 +10,18 @@
   font-family: 'JetBrains Mono';
   src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
 }
-</style><script>var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="/js/gitalk.js"></script><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@10.5.0/dist/mermaid.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
  menuSettings: {
    zoom: "None"
  },
@@ -41,7 +52,7 @@ if (window.localStorage.getItem('theme-mode') === 'dark')
  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
  --light-background: url('/img/bk.jpg');
  --theme-encrypt-confirm: '确认'
-}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script async src="/js/gitalk.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
 window.mermaid = mermaid;
 code.paintMermaid();
 </script><script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js"></script><script>MathJax.Hub.Config({
@@ -62,21 +73,12 @@ code.paintMermaid();
     displayMath: [["\\[", "\\]"]]
   }
 });
-</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: '59256fb9d7fe0048c078',
- clientSecret: '147295a3adaea9532bd16d54b1dc9c964b5aefa7',
- repo: 'ToUNVRSe.github.io',
- owner: 'ToUNVRSe',
- admin: ['ToUNVRSe'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");document.querySelector('.lg-container')?.remove()
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
 lightGallery(document.getElementById('post-bg'), {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
  switches: {'article': Pjax.switches.sideBySide},
  switchesOptions: {
    'article': {
@@ -87,25 +89,12 @@ lightGallery(document.getElementById('post-bg'), {
    }
  }
 });
-document.addEventListener("pjax:complete", reset);document.addEventListener('pjax:success', _ => bszCaller.fetch(
- "//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback", a => {
-  bszTag.texts(a),
-  bszTag.shows()
-}));reset()})</script><script class="pjax-js">reset= () => {gitalk = new Gitalk({
- clientID: '59256fb9d7fe0048c078',
- clientSecret: '147295a3adaea9532bd16d54b1dc9c964b5aefa7',
- repo: 'ToUNVRSe.github.io',
- owner: 'ToUNVRSe',
- admin: ['ToUNVRSe'],
- distractionFreeMode: false,
- id: location.pathname
-});
-if (document.querySelector("#gitalk")) gitalk.render("gitalk");MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
 lightGallery(document.getElementById('post-bg'), {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
- selectors: ['title','article','#aside-block','.pjax-js'],
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
  switches: {'article': Pjax.switches.sideBySide},
  switchesOptions: {
    'article': {
@@ -228,7 +217,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>论问题</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-09-28T08:58:46.000Z" id="date"> 2023-09-28</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-02T12:22:21.394Z" id="updated"> 2024-10-02</time></div></span><br><span id="busuanzi_container_page_pv">Page View: <span class="control" id="busuanzi_value_page_pv">loading...</span></span></div></div><hr><div id="post-content"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码是标题" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>论问题</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-09-28T08:58:46.000Z" id="date"> 2023-09-28</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-02T12:22:21.394Z" id="updated"> 2024-10-02</time></div></span></div></div><hr><div id="post-content"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码是标题" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
       <script id="hbeData" type="hbeData" data-hmacdigest="c7ec4de41d279610043b333341b668a8db927f5e0dbedbade5e33539d3adfc64" data-keysalt="1c09ae52a015f165da1e51b2c4d1af0b36580f4280c3d1561098575d1330d70d" data-ivsalt="fc95a6575cbb71b4657c522e9c746b59aa1b325a81d1f378b1e7057fa9cd5d27">
         d93b2855226625940764de4c861c72717b8934422fb9fae3945fbc1a95a60c6064ed998e9212d16a3815eb782fffc9bd7d0e7e6fca64efa13e3be0ecf5059d624b8feeeb5c2c215ae01999532b9fe7f83ad63927597c284c2ea9648bf7d7d782ef3cb397e5c496e8e9fc2c7efc5c832c3e1ac8fd943f2fed036eab2739dd3d1800b1c9efa2f8c4d9b0da14877914fcee5d3cee6f67369ce79610fe73f4f7b8b8d61e2156ceb6202c9219b0ff6bd540612e30ebca04975200e08439eb6b4c880208f49f02e217d4982f733a9d62798ee7b0873c4ac6a5019dfddc6ee06d8bd9b079d0e883b1135dbc76e743ee4613a6cd4445abd12027a92ca16064f67fdeae7521237a18ebdf219c5ae15df24cb61e336203c35918d269575985b9f9d68b66fbe90be640d7e5de0636511892b50b00f179fa50da0b253c2e4d1024822e337db58343c0fccb9a596425456fc41389d7c6cbe69e5764118c65ee5986cac3bbac1f8c775c50cc8f9a2c3144bbb80b6c3e0f2ab8c56d0126ac508ba771a102300e1f00b8c0c640e40609bd671c4a22d293f815b866bbb5c41fff77a64d7cb4a05c3d562345d55079c4f58d26df3e124764d9ad1e06930293a2cf984ba13e6183aebef84839640d15e1b0496b99ada14adabeeb850517957a502d0d89c806c0c291e4b3cdcf7d7a0d839badc57c32186885479c3e408741eef8a74fb8cc7941ea0ece37e931228a63b1d52d8ccc914c979d3ffda0ab231e6731978d1a27c80495cb26422c74675912e13c1f96e288203f5588e620e09746e84cefbff34b985d094d641f56b1894a2e39b7d7ad2a2a5a1637eb32a439936d510c8a2520e71cdeaac25a49e0e9fce02cad1542938c9ec892026025bdcab7c8931084f3b0650158849680f6e81e189d904c6884e55a50118ba5f7ecad15014f1b517cdcf6b570dbbd3f0e72cfa26f5dcdd1146f5d0b7790b49a70c04e7e3ce8cdedc3d81250c03a5d8fae3e5e42a7f2edc2c4a3902b8dc6f0cd21271925403d073ef378649fa2365a0e4d0242bb4dd1a9bb07510219bdd154c4862aaf5c891bd9012b29d68bb713fa9526126ee224aeaf0a1e509719816ce0ba71de40fb83a4915aed4d7ae278501823204fdd47a15e76d42bd5035d9b3f33c2b739808ee1beeff65bd0c3275a36f48600ec9099887069da36f443c2bacb276727cdb4671f7f999b663317388083a67477dcbea0b7e0cd22852f8e75fbb79e5aeb57e3433b597c0b7a4be38b5c0aad81c590c592a2209f859d833113140496b12ed3313f833ba797da9637b01c11ae58a123da8eea198abf3eb8674cae58e454871de25350002c4bd32a41fe43f3c167a9637d67362bb40f25d8b6a5363f873c2e193fecafcca1043cd312bfcf70370bd71025940ff1d1ad12236d50af1b2a0d257a16e42381829a9b869571c3ce157908c1229139292124aa8d4ce891a6c71ed213f0ac1062b2a9def30ba757a4bb574c04ca43772999fa209b5ced8b43037e0d93267ca5895453fdb465c0954bba2b1897a5e1752b185eb6b828bee4eac0ca5c9220a376f83e066342063f0f3fab4a22e34a79f694a383d1e282f4efffea2258f0daca9d4d6bfc897da0c8e5f0ed9bc4a1aba39084c07213f8860f8a94abbb962c2d3487bb5780b6ddc0edc7205114cb8540c512261a3fe0dc168b095a845eb32035d8ff78bed70fe8a1a65773e092fa2eab602f9730ee1416678aaa099bf65facf5a06f7ae09fa1fb753089a3bb9080895da9059dfdeede4cf2c9320459907437b6f900e875c6b1e8b8435ff69b58d3bd055de6577cb4beba8cdb6db726d13083b2bed653697f5d3f17d208b3c4bb64cc33638c10b4a866727b585a4e5740039aa70828b7eccb331718555d449594c94f5c127ddbb772342f3eaefbb48b7bc279074db059fcb05e33d0cebc51d5d0417247c705adbb19d4bb989dd052e615b0432e1aaa2b67821355395566c79bd07f21f54bc6ede9e234d2eea8a27cf823b012f897f3fe25d9f5d7ef95fbcc9b23d371f3f141b61a9388bbfd9fcd31be9e0631f02a71d4d5b742b07a109ca8e14f21be9214e5e33d8187a7dc058d5a55f4ed27f095c1abbd9d366130385d8a8e8cd0dfa17dde468fcabcc1f3b2ddf79d499d1edb5e0c1247344eb0daf15550880982f32b5ace5751219a4381d724d6107f82bd9e8a79297f5c5cbd6a15f181796bd91beb411189a5f3aa5dab83f1407472e216ab18238b09a1f4c9cbd8bab66cf934428bffee82d414dc60f4b0a388c57dcccbb00bafb392d74e02ea73d3fbce3066941b650b713d684726468154448b4e889ec0c00949cbd5fee3f44493e0ca046bd75a055f58e825aae4755c02729589a9758ed95021ca07e1a8d8ae6097fdbdeee5a7194807b2050918a7e81c2e1b1934f6233fe14ff91e36fd7b7a6e8377575d98dd96c15bb07026c1893d4c3d5c37c3fa31aa5be5f567769f15886c34344400f104e14fa1f0ef85b02ed69fee616ee9ac94de37d72d83abb7d011e084bdb003fc66eca778f9f2f9c9eaee73aafe4d038bc77f282734870d98fa9862bec051875c6a7941092f48f407970cfc1b36b1fa0bd42a6104667131fc1b1894f083870545cb7c7bad34db68b7bd145f726d4c2c4addbeb5c30d2dc1d91684ce02a8f5fa0667abd626af0f5a85302fe1eb3d6d9e738f360bb8521af92ee8e3525f2935c42213787f1430f0756f0998e704ff5b1aef4a892eb3bde237c0f7efc0f762050634aa15d4d2344fe5f79560230e0b81978e43921b51295990a19480ac332df498c42eeeea9161863660f8ab0e75197091e3381709307028b188828113a3fc95cc51990533ff79de259f6c3401a6ccaba1ca734a526822b1ebf0c20982c0a1222f06e1c904e17c20adeecb5059d9b7b7b00ae5abc74a22e91d2769c8db601b51aa90c0422ac28d3def66ecebbecd34996f9094b341338d780bccdfd1f2cbb527e52aa1aa75c6c8a3863f700e43de15c801c4e2116e3db393fad11fb698e54157877e8174736c6913513c79e4e420988285d501f903da3236b486edc08ef67f0422e7cfe251a14e7eec56b508b8086a046a3fc7659cdba1bad6fb75775bb85ccded442349054e37c6134dee689e061116647740fe14b94f0decc12482c7c6340f875794162968ebf0592e27b9a9b0def6e1cc74c7cb8e2504015e3cbf4c8bfaf1ae66bcf65116fa336a6f073e4961211f88db68eaae6813493bb861dc4027bdcc9802e1282212fbc65a85ab217f4510e7e7b20918600d82592a89af1cbc57d502531679210dcf15a45469e31149248004ed63e4c64a3d6697a75856dab76d3b7d541781ae01a36aa19a021c12ec11df0798e3938eee8c1a645ea9f07d945942fb58f5c670b16eeda3fee63712d15744adc084af8c3c6d7bb03ccf9a906fb83e898880add65e152e71bb73f659f51e4e7ba367fdfd872d898d29edc496b4ba24e9c2eb617acbd3742bb80a6c44ec7296e78ca2e66502e1eb4c1222c719f2c8f3fa076f00892d38e34068b6a604cc1daa57ee
       </script>
@@ -242,4 +231,4 @@ mjx-container[display="true"] + br {
         <button class="hbe hbe-confirm"></button>
       </div>
     </div>
-    <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/rprmq1/">← Next rprmq1</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/HangZhou-2022/">杭州集训 2022 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"><div id="toc-div" style="display:none"><h1>INDEX</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A9%E6%8D%8D%E5%8D%AB%E7%9C%9F%E7%90%86%E5%86%85%E5%8C%96%E4%BA%8E%E5%BF%83%E5%A4%96%E5%8C%96%E4%BA%8E%E8%A1%8C"><span class="toc-text">让捍卫真理，内化于心外化于行</span></a></li></ol></div></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+    <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/rprmq1/">← Next rprmq1</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/HangZhou-2022/">杭州集训 2022 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"><div id="toc-div" style="display:none"><h1>INDEX</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A9%E6%8D%8D%E5%8D%AB%E7%9C%9F%E7%90%86%E5%86%85%E5%8C%96%E4%BA%8E%E5%BF%83%E5%A4%96%E5%8C%96%E4%BA%8E%E8%A1%8C"><span class="toc-text">让捍卫真理，内化于心外化于行</span></a></li></ol></div></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

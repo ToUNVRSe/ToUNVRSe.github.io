@@ -95,8 +95,9 @@ class Code {
         return str.toUpperCase();
     };
     doAsCode = (item) => {
+        const code_fold = page_config.code_fold || config.code_fold || -1;
         const codeType = this.resetName(item.classList[1]), lineCount = getElement('.gutter', item).children[0].childElementCount >> 1;
-        item.classList.add(lineCount <= config.code_fold || config.code_fold === -1 ? 'open' : 'fold');
+        item.classList.add(lineCount <= code_fold || code_fold === -1 ? 'open' : 'fold');
         item.classList.add('expand-box');
         item.innerHTML =
             `<div class="ex-header" tabindex='0'>
@@ -378,7 +379,7 @@ class Selectors {
     }
 }
 class Comments {
-    search = ["valine", "gitalk", "waline", "artalk"];
+    search = ["valine", "gitalk", "waline", "artalk", "utterances"];
     elements = [];
     setHTML = () => {
         if (!document.querySelector('#comments .selector'))

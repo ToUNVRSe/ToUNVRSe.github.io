@@ -108,7 +108,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><script clas
  id: location.pathname
 });
 if (document.querySelector("#gitalk")) gitalk.render("gitalk");MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
@@ -235,7 +236,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>浮士德</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-03T07:27:07.000Z" id="date"> 2025-04-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-04-03T11:27:09.946Z" id="updated"> 2025-04-03</time></div></span></div></div><hr><div id="post-content"><blockquote>
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>浮士德</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-03T07:27:07.000Z" id="date"> 2025-04-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-04-03T11:27:10.000Z" id="updated"> 2025-04-03</time></div></span></div></div><hr><div id="post-content"><blockquote>
 <p>手稿写于 3/16<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <p>“我发现写作容易陷入浮士德式的陷阱中，你看，有无这段话对文本的影响很大，而我只能给读者一种。”<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
@@ -248,12 +249,12 @@ mjx-container[display="true"] + br {
 <p>“那么你认为它不是什么呢？”我问我的朋友。</p>
 <p>“很显然，它什么都不可能不是嘛！”</p>
 <p>我部分同意他的说法，因为这是一张白纸，所以这不可能是什么都是。</p>
-<section class="footnotes" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>此为该鲜花的第二版，第一版讨论了读者的差异如何影响作者写作，现在我们知道它不是这样。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>此不是对任何文艺创作的批判，包括我朋友的白纸。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>此不会使你每秒受到 200 凋亡损伤。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>此为该鲜花的第二版，第一版讨论了读者的差异如何影响作者写作，现在我们知道它不是这样。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>此不是对任何文艺创作的批判，包括我朋友的白纸。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>此不会使你每秒受到 200 凋亡损伤。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/If-There-Anyone-Ask-Me/">← Next 若有人问我</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/Is-It-Smart/">耳目 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

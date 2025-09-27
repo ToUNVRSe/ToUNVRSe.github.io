@@ -108,7 +108,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><script clas
  id: location.pathname
 });
 if (document.querySelector("#gitalk")) gitalk.render("gitalk");MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
@@ -235,16 +236,20 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从 Github 来的朋友...</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-30T08:01:50.000Z" id="date"> 2025-04-30</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-05-02T06:10:21.096Z" id="updated"> 2025-05-02</time></div></span></div></div><hr><div id="post-content"><blockquote>
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从 Github 来的朋友...</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-30T08:01:50.000Z" id="date"> 2025-04-30</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-05-02T06:10:22.000Z" id="updated"> 2025-05-02</time></div></span></div></div><hr><div id="post-content"><blockquote>
 <p>想想还是 No Categorie No Tag 简单直接</p>
 </blockquote>
 <p>如果你来追寻一个答案，那么也许是：</p>
-<figure class='item-img' data-src='2025-4-30.png'><img src="2025-4-30.png" alt="截至 2025 年 4 月 27 日"><figcaption aria-hidden="true">截至 2025 年 4 月 27 日</figcaption>
+<figure class='item-img' data-src='2025-4-30.png'><img src="2025-4-30.png" alt="截至 2025 年 4 月 27 日">
+<figcaption aria-hidden="true">截至 2025 年 4 月 27 日</figcaption>
 </figure>
-<p>我目前仍是 Contributor 而非 Member，因为我自认为还没有能力作为一名稳定的 Member。</p>
+<p>我目前仍是 Contributor 而非
+Member，因为我自认为还没有能力作为一名稳定的 Member。</p>
 <p>嗯？你没有找到吗？啊，那很好啊，可你想要得到更多的什么呢？</p>
-<p>我说，我的前端都是在这个项目的进程中学习的，依靠的是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/">MDN</a> 和一些其他的资料，我并不是什么特别的人。</p>
-<p>你说，为什么这些内容不在 <a href="/about">ABOUT</a> 中，我不知道，也许你不想知道这些内容，也许你可以做出一个解释。</p>
+<p>我说，我的前端都是在这个项目的进程中学习的，依靠的是 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/">MDN</a>
+和一些其他的资料，我并不是什么特别的人。</p>
+<p>你说，为什么这些内容不在 <a href="/about">ABOUT</a>
+中，我不知道，也许你不想知道这些内容，也许你可以做出一个解释。</p>
 <p>那很困难了，我在这许多许多的篇幅中，从这些许多许多的只言片语中你是否想推导出我呢？</p>
 <p>...我感激你。</p>
 <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/Heaven/">← Next 死界</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/A-Rest/">休止符 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

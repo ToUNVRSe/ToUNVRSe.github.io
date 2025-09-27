@@ -108,7 +108,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><script clas
  id: location.pathname
 });
 if (document.querySelector("#gitalk")) gitalk.render("gitalk");MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
@@ -235,11 +236,13 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>再见，再不再见</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-12-26T01:40:09.000Z" id="date"> 2023-12-26</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-02T12:22:13.066Z" id="updated"> 2024-10-02</time></div></span></div></div><hr><div id="post-content"><blockquote>
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>再见，再不再见</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-12-26T01:40:09.000Z" id="date"> 2023-12-26</time></div></span><br><span>Last Update: <div class="control"><time datetime="2024-10-02T12:22:14.000Z" id="updated"> 2024-10-02</time></div></span></div></div><hr><div id="post-content"><blockquote>
 <p>原定为《再见，只为再见》。</p>
 </blockquote>
-<p>本来想放在《杭州集训 2023》中的，但因为种种原因那篇文章的目的变了，所以又 new 了一个。</p>
-<p>无论如何，结束了。同我 OI 时期去过和将要去的城市一同进入了回忆，流转于一声声叹息中。这次杭州充满了遗憾，而这些都只能在那之后再谈了。</p>
+<p>本来想放在《杭州集训
+2023》中的，但因为种种原因那篇文章的目的变了，所以又 new 了一个。</p>
+<p>无论如何，结束了。同我 OI
+时期去过和将要去的城市一同进入了回忆，流转于一声声叹息中。这次杭州充满了遗憾，而这些都只能在那之后再谈了。</p>
 <p>我想，如果这些重来一遍，大概也不会有变化的，所谓掌握在自己手中的命运，在一个个的被选择中就已经被诠释了。真的可以推倒重来么？不见得。释怀。</p>
 <p>总觉得自己已经不再能够沸腾，每次睡一觉起来，先前的那些冲动全部消失殆尽，空留下了我的麻木与自责。</p>
 <p>习得性无助大概已经根深蒂固了吧，总是无能为力，总是无功而返。</p>

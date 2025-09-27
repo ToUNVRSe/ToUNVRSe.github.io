@@ -108,7 +108,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><script clas
  id: location.pathname
 });
 if (document.querySelector("#gitalk")) gitalk.render("gitalk");MathJax.Hub.Queue(["Typeset", MathJax.Hub]);document.querySelector('.lg-container')?.remove()
-lightGallery(document.getElementById('post-bg'), {
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
   plugins: [lgZoom,lgThumbnail],
   selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
  cacheBust: false,
@@ -235,14 +236,16 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>被紧急加更的鲜花</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-03T10:16:30.000Z" id="date"> 2025-04-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-04-04T11:05:27.803Z" id="updated"> 2025-04-04</time></div></span></div></div><hr><div id="post-content"><blockquote>
+</style></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">HOME</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">ARCHIVES</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">ABOUT</span></a></li><li class="navItem"><a class="navBlock" href="/info/"><span class="navItemTitle">INFO</span></a></li><li class="navItem"><a class="navBlock" href="/friend/"><span class="navItemTitle">FRIEND</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>被紧急加更的鲜花</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-04-03T10:16:30.000Z" id="date"> 2025-04-03</time></div></span><br><span>Last Update: <div class="control"><time datetime="2025-04-04T11:05:28.000Z" id="updated"> 2025-04-04</time></div></span></div></div><hr><div id="post-content"><blockquote>
 <p>手稿写于 4/2</p>
 </blockquote>
 <p>等一下！请你注意这是一篇紧急加更的鲜花！一般来说由于昨天写的鲜花篇幅较长，今天可能不更或者写得较短。但现在这是个特殊情况，因为就在刚才发生了一件特殊的事情！我们伟大的年级安排缩短了数学测试的世界并增添了一节仔细，好从邪恶的全校活动中为高三抢来十五分钟的自习时间，这样等我们在去参加时就与春晚只看《难忘今宵》无异，这样就省下了更多的放学时间用于学习。不过这并不是我说的特殊情况，特殊的时我们中竟然有对这完美安排的异议，它们不能体谅年级的良苦用心，不懂得感恩戴德，不懂得年级的恩情永远还不完啊！真是可耻的高三败类，所以我决定将安排的时间全部用于紧急地加更一篇额外的鲜花用于批判这种无耻行径！</p>
 <p>但是鲜花并不是发表社论的地方，所以接下来的正文中我将沿用鲜花中常见的隐喻与讽刺的手法，但是请大家务必记住今天的主题原来是什么！</p>
 <p>正文：</p>
 <p>众所周知，规则是用来打破的，比如规定双休我就单休，单休没被管那就可以不休，规定的放学时间太多了我就缩短一点，只有不断地打破规则，才能不断顺应时代的发展，这是毋庸置疑的真理。再比如权威是应当被质疑的，比如权威说要有良好的环境，我看就未必，你想一栋楼只有两个厕所，坏了一个我拖着不修，这样它们就会少厕所，在排队时间忽略不计的前提下就节省了上厕所的时间；再比如我禁止它们抄近路，这样它们就自发地奔跑以缩短时间。这些权威的管理规则真是太好用了，真是无敌了，无敌了。</p>
-<p>那我们怎么打破规则呢？EZ，我们制定新的规则，有句新话说得好：“规则就是规则，又不是今天才定的。”它告诉我们要尊重即使只制定了一个月的规定，那么今天刚制定的规则岂不是更重要？时代，马上广播十分钟，告诉它们这个道理（顺带说一些，虽然一会测试是会有 40~60db 的干扰，但是大家一定要沉得住气，不要辜负了为大家争取的时间）。不过注意到制定规则时少用“禁止”的字眼，这样它们就看不出意图了，只要把看出来的都按下去，这样就皆大欢喜了。</p>
+<p>那我们怎么打破规则呢？EZ，我们制定新的规则，有句新话说得好：“规则就是规则，又不是今天才定的。”它告诉我们要尊重即使只制定了一个月的规定，那么今天刚制定的规则岂不是更重要？时代，马上广播十分钟，告诉它们这个道理（顺带说一些，虽然一会测试是会有
+40~60db
+的干扰，但是大家一定要沉得住气，不要辜负了为大家争取的时间）。不过注意到制定规则时少用“禁止”的字眼，这样它们就看不出意图了，只要把看出来的都按下去，这样就皆大欢喜了。</p>
 <p>怎么按下去呢？方法有很多，比如说我们可以通过阴阳怪气来打击它们的自尊心，再比如我们可以让它们不能晚自习而去写检查，这样为了高考，它们自然不会再造反，再比如我们可以从历史中学习经验，用岳飞的事迹来教育它们，因为我们是早已禁止录音笔了的。</p>
 <p>因为不听的都会滚蛋，所以所有的都听话。</p>
 <p><strong>正文：</strong></p>
@@ -253,5 +256,6 @@ mjx-container[display="true"] + br {
 <p>另：虽然我不做椭圆，但是测试的椭圆实在水到没变，根据其他反馈来看，我应当引用一句话：“我渐渐意识到，自己都觉得没那么有趣的题目，别人凭什么觉得有趣？远远超过三小时的汗水，才值得几百人为一场比赛花上三小时。”</p>
 <p>等一下！</p>
 <p class='item-img' data-src='Lutonada.jpg'><img src="Lutonada.jpg" style="zoom:10%;"></p>
-<p>我是说露托真的很可爱，去年刚见到的时候就这么觉得了，然后 4/2 见到立刻就决定了！幸好没人跟我抢，因为早就抢光了。哈！</p>
+<p>我是说露托真的很可爱，去年刚见到的时候就这么觉得了，然后 4/2
+见到立刻就决定了！幸好没人跟我抢，因为早就抢光了。哈！</p>
 <div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/post/A-Rest/">← Next 休止符</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/post/Taxonomy/">分类学 Prev →</a></div></div></div><div id="comments"><div id="gitalk"></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://gravatar.loli.net/avatar/c7a39370ea6a621c35b1649795d8607a?s=400" alt="Logo" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/About">ToUNVRSe</a></h1><div id="description"><p>我期待<br>再回首</p></div></div><div id="aside-block"></div><footer><nobr>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

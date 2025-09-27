@@ -284,11 +284,355 @@ try {
     var canvasDusts = new canvasDust('#canvas-dust');
 }
 catch (e) { }
+class GiscusManager {
+    messageHandlers = [];
+    config = null;
+    loaded = false;
+    settingsLoadedPromise = null;
+    containerPromise = null;
+    isLoading = false;
+    loadStartTime = 0;
+    showErrorTimeoutId = null;
+    activeTimeouts = new Set();
+    async loadConfig() {
+        if (this.loaded)
+            return this.config;
+        try {
+            const response = await fetch('/giscus.json');
+            if (response.ok) {
+                this.config = await response.json();
+            }
+        }
+        catch (e) {
+            console.warn('加载Giscus配置文件失败:', e);
+        }
+        this.loaded = true;
+        return this.config;
+    }
+    async validateOrigin() {
+        if (typeof window === 'undefined')
+            return true;
+        const currentOrigin = window.location.origin;
+        const settings = window.giscusSettings;
+        if (settings?.origin === currentOrigin)
+            return true;
+        const config = await this.loadConfig();
+        if (!config)
+            return true;
+        if (config.origins?.includes(currentOrigin))
+            return true;
+        if (config.originsRegex?.length) {
+            for (const pattern of config.originsRegex) {
+                try {
+                    if (pattern && new RegExp(pattern).test(currentOrigin))
+                        return true;
+                }
+                catch (e) {
+                    console.warn('无效的正则表达式模式:', pattern, e);
+                }
+            }
+        }
+        return !(config.origins?.length || config.originsRegex?.length);
+    }
+    waitForGiscusSettings(timeout = 8000) {
+        if (this.settingsLoadedPromise) {
+            return this.settingsLoadedPromise;
+        }
+        this.settingsLoadedPromise = new Promise((resolve, reject) => {
+            const settings = window.giscusSettings;
+            if (settings !== undefined) {
+                resolve(settings);
+                return;
+            }
+            let timeoutId;
+            const startTime = Date.now();
+            const checkSettings = () => {
+                const currentSettings = window.giscusSettings;
+                if (currentSettings !== undefined) {
+                    this.activeTimeouts.delete(timeoutId);
+                    resolve(currentSettings);
+                    return;
+                }
+                if (Date.now() - startTime > timeout) {
+                    this.activeTimeouts.delete(timeoutId);
+                    reject(new Error(`Giscus配置加载超时 (${timeout}ms)`));
+                    return;
+                }
+                timeoutId = setTimeout(checkSettings, 100);
+                this.activeTimeouts.add(timeoutId);
+            };
+            checkSettings();
+        });
+        return this.settingsLoadedPromise;
+    }
+    waitForContainer(timeout = 5000) {
+        if (this.containerPromise) {
+            return this.containerPromise;
+        }
+        this.containerPromise = new Promise((resolve, reject) => {
+            let timeoutId;
+            const checkContainer = () => {
+                const container = document.querySelector('#giscus');
+                if (container) {
+                    this.activeTimeouts.delete(timeoutId);
+                    resolve(container);
+                    return;
+                }
+                timeoutId = setTimeout(checkContainer, 100);
+                this.activeTimeouts.add(timeoutId);
+            };
+            if (typeof document === 'undefined') {
+                reject(new Error('文档对象不可用'));
+                return;
+            }
+            setTimeout(() => {
+                this.activeTimeouts.delete(timeoutId);
+                reject(new Error(`Giscus容器未找到 (${timeout}ms)`));
+            }, timeout);
+            if (document.readyState === 'loading') {
+                const domContentLoadedHandler = () => {
+                    checkContainer();
+                };
+                document.addEventListener('DOMContentLoaded', domContentLoadedHandler, { once: true });
+            }
+            else {
+                checkContainer();
+            }
+        });
+        return this.containerPromise;
+    }
+    async loadGiscusScript() {
+        if (this.isLoading) {
+            throw new Error('Giscus脚本正在加载中');
+        }
+        this.isLoading = true;
+        this.loadStartTime = Date.now();
+        this.settingsLoadedPromise = null;
+        this.containerPromise = null;
+        this.clearAllMessages();
+        try {
+            const [container, settings] = await Promise.all([
+                this.waitForContainer(),
+                this.waitForGiscusSettings()
+            ]);
+            const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+            const existingIframe = container.querySelector('iframe.giscus-frame');
+            if (existingScript)
+                existingScript.remove();
+            if (existingIframe)
+                existingIframe.remove();
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.async = true;
+            const attributes = {
+                'data-repo': settings.repo,
+                'data-repo-id': settings.repoId,
+                'data-category': settings.category,
+                'data-category-id': settings.categoryId,
+                'data-mapping': settings.mapping,
+                'data-strict': settings.strict,
+                'data-reactions-enabled': settings.reactionsEnabled,
+                'data-emit-metadata': settings.emitMetadata,
+                'data-input-position': settings.inputPosition,
+                'data-lang': settings.lang,
+                'data-theme': this.getGiscusTheme(document.documentElement.getAttribute('theme-mode')),
+                'crossorigin': settings.crossorigin || 'anonymous'
+            };
+            Object.entries(attributes).forEach(([key, value]) => {
+                if (value !== undefined && value !== null && value !== '') {
+                    script.setAttribute(key, String(value));
+                }
+            });
+            container.appendChild(script);
+            await new Promise((resolve, reject) => {
+                const timeoutId = setTimeout(() => {
+                    reject(new Error('Giscus脚本加载超时'));
+                }, 15000);
+                script.onload = () => {
+                    clearTimeout(timeoutId);
+                    resolve();
+                };
+                script.onerror = () => {
+                    clearTimeout(timeoutId);
+                    reject(new Error('Giscus脚本加载失败'));
+                };
+            });
+            this.clearAllMessages();
+        }
+        catch (error) {
+            const container = document.querySelector('#giscus');
+            if (container) {
+                this.showErrorWithDelay(container, error);
+            }
+            throw error;
+        }
+        finally {
+            this.isLoading = false;
+        }
+    }
+    showErrorWithDelay(container, error) {
+        if (this.showErrorTimeoutId) {
+            clearTimeout(this.showErrorTimeoutId);
+        }
+        this.showErrorTimeoutId = setTimeout(() => {
+            const loadTime = Math.round((Date.now() - this.loadStartTime) / 1000);
+            let msg = '网络连接较慢';
+            if (error.message.includes('超时')) {
+                msg = `加载超时 (${loadTime}秒)`;
+            }
+            else if (error.message.includes('失败')) {
+                msg = '网络连接失败';
+            }
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'giscus-error-message';
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'giscus-error-icon';
+            iconDiv.textContent = '⏳';
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'giscus-error-content';
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'giscus-error-title';
+            titleDiv.textContent = '评论系统加载较慢';
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'giscus-error-message-text';
+            messageDiv.textContent = msg;
+            const retryButton = document.createElement('button');
+            retryButton.className = 'giscus-error-retry';
+            retryButton.textContent = '重新加载';
+            retryButton.addEventListener('click', () => {
+                retryButton.disabled = true;
+                retryButton.textContent = '重新加载中...';
+                const manager = window.giscusManager;
+                if (manager?.loadGiscusScript) {
+                    manager.loadGiscusScript().finally(() => {
+                        retryButton.disabled = false;
+                        retryButton.textContent = '重新加载';
+                    });
+                }
+            });
+            contentDiv.appendChild(titleDiv);
+            contentDiv.appendChild(messageDiv);
+            contentDiv.appendChild(retryButton);
+            errorDiv.appendChild(iconDiv);
+            errorDiv.appendChild(contentDiv);
+            const existingError = container.querySelector('.giscus-error-message');
+            if (existingError)
+                existingError.remove();
+            container.appendChild(errorDiv);
+            this.showErrorTimeoutId = null;
+        }, 5000);
+    }
+    async getDefaultCommentOrder() {
+        return (await this.loadConfig())?.defaultCommentOrder || 'oldest';
+    }
+    getGiscusTheme(siteTheme) {
+        const themeConfig = window.giscusThemeConfig;
+        if (themeConfig?.theme)
+            return themeConfig.theme;
+        if (themeConfig?.light && themeConfig?.dark) {
+            return siteTheme === 'dark' ? themeConfig.dark : themeConfig.light;
+        }
+        return siteTheme === 'auto' || !siteTheme ? 'preferred_color_scheme'
+            : siteTheme === 'dark' ? 'dark' : 'light';
+    }
+    syncTheme(theme) {
+        return this.sendMessage({
+            setConfig: {
+                theme: this.getGiscusTheme(theme || document.documentElement.getAttribute('theme-mode'))
+            }
+        });
+    }
+    sendMessage(message) {
+        if (!message)
+            return false;
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe?.contentWindow)
+            return false;
+        try {
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+            return true;
+        }
+        catch (e) {
+            return false;
+        }
+    }
+    addMessageHandler(handler) {
+        this.messageHandlers.push(handler);
+    }
+    removeMessageHandler(handler) {
+        const index = this.messageHandlers.indexOf(handler);
+        if (index > -1)
+            this.messageHandlers.splice(index, 1);
+    }
+    isLoaded() {
+        return !!document.querySelector('iframe.giscus-frame');
+    }
+    destroy() {
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('message', this.handleMessage);
+        }
+        if (this.showErrorTimeoutId) {
+            clearTimeout(this.showErrorTimeoutId);
+            this.showErrorTimeoutId = null;
+        }
+        this.settingsLoadedPromise = null;
+        this.containerPromise = null;
+        this.messageHandlers = [];
+        this.isLoading = false;
+        this.loadStartTime = 0;
+        this.activeTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+        this.activeTimeouts.clear();
+    }
+    constructor() {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('message', this.handleMessage);
+        }
+    }
+    handleMessage = (event) => {
+        if (!event || event.origin !== 'https://giscus.app')
+            return;
+        if (!(typeof event.data === 'object' && event.data?.giscus))
+            return;
+        const giscusData = event.data.giscus;
+        try {
+            this.messageHandlers.forEach(handler => {
+                if (typeof handler === 'function') {
+                    handler(giscusData);
+                }
+            });
+        }
+        catch (e) {
+            console.warn('Giscus 消息处理异常:', e);
+        }
+    };
+    clearAllMessages() {
+        if (this.showErrorTimeoutId) {
+            clearTimeout(this.showErrorTimeoutId);
+            this.showErrorTimeoutId = null;
+        }
+        const container = document.querySelector('#giscus');
+        if (container) {
+            const existingError = container.querySelector('.giscus-error-message');
+            if (existingError)
+                existingError.remove();
+        }
+    }
+}
+let giscusManager;
+if (typeof window !== 'undefined') {
+    giscusManager = new GiscusManager();
+    window.giscusManager = giscusManager;
+}
 class ColorMode {
     html = document.documentElement;
     dark = this.html.getAttribute('theme-mode') === 'dark';
     inChanging = false;
     btn = getElement('#color-mode');
+    syncGiscusTheme = () => {
+        if (typeof giscusManager !== 'undefined' && giscusManager.isLoaded()) {
+            giscusManager.syncTheme();
+        }
+    };
     change = () => {
         this.inChanging = true;
         let background = document.createElement('div');
@@ -318,6 +662,7 @@ class ColorMode {
             }
             background.style.opacity = '0';
             code.resetMermaid();
+            this.syncGiscusTheme();
         });
         setTimeout(() => {
             document.body.removeChild(background);
@@ -379,19 +724,38 @@ class Selectors {
     }
 }
 class Comments {
-    search = ["valine", "gitalk", "waline", "artalk", "utterances"];
+    search = ["valine", "gitalk", "waline", "artalk", "utterances", "giscus"];
     elements = [];
-    setHTML = () => {
-        if (!document.querySelector('#comments .selector'))
+    async validateGiscusOrigin() {
+        return typeof giscusManager !== 'undefined' ? await giscusManager.validateOrigin() : true;
+    }
+    async loadGiscus() {
+        const container = document.querySelector('#giscus');
+        if (!container)
             return;
-        this.elements = [];
-        this.search.forEach((item) => {
-            try {
-                this.elements.push(new Pair(getElement(`#${item}`), getElement(`.${item}-sel`)));
-            }
-            catch (e) { }
-        });
-        new Selectors(this.elements, 0);
+        const isOriginValid = await this.validateGiscusOrigin();
+        if (!isOriginValid)
+            return;
+        if (typeof giscusManager !== 'undefined') {
+            giscusManager.loadGiscusScript();
+        }
+    }
+    setHTML = async () => {
+        const commentsContainer = document.querySelector('#comments');
+        if (!commentsContainer)
+            return;
+        const selectorContainer = commentsContainer.querySelector('.selector');
+        if (selectorContainer) {
+            this.elements = [];
+            this.search.forEach((item) => {
+                try {
+                    this.elements.push(new Pair(getElement(`#${item}`), getElement(`.${item}-sel`)));
+                }
+                catch (e) { }
+            });
+            new Selectors(this.elements, 0);
+        }
+        await this.loadGiscus();
     };
     constructor() {
         this.setHTML();
@@ -699,6 +1063,106 @@ class Index {
     }
 }
 let indexs = new Index();
+class MonacoEditor {
+    // keep references to editors to avoid garbage collection
+    editors = new Map();
+    updateEditorLayout = () => {
+        for (const [container, ed] of Array.from(this.editors.entries())) {
+            if (!(container instanceof HTMLElement) || !container.isConnected) {
+                this.editors.delete(container);
+                continue;
+            }
+            try {
+                ed.layout();
+            }
+            catch (e) { /* ignore */ }
+        }
+    };
+    createEditor = (container, lang, theme, readOnly, height, options) => {
+        if (container.getAttribute('data-initialized') === 'true')
+            return;
+        container.setAttribute('data-initialized', 'true');
+        container.style.height = height;
+        try {
+            const mon = window.monaco || monaco;
+            if (!mon || !mon.editor || !mon.editor.create) {
+                console.error('MonacoEditor: monaco not available when trying to create editor');
+                return;
+            }
+            // prefer the <pre> source textContent to avoid HTML-escaped entities
+            const pre = container.querySelector('pre');
+            const source = pre?.textContent || '';
+            const editor = mon.editor.create(container, {
+                value: source,
+                language: lang,
+                theme: theme,
+                readOnly: readOnly,
+                ...options,
+            });
+            // store editor instance to avoid garbage collection
+            this.editors.set(container, editor);
+        }
+        catch (e) {
+            console.error('MonacoEditor: failed to create editor', e);
+        }
+    };
+    findEditor = () => {
+        const editors = document.querySelectorAll('.monaco-editor-code');
+        editors.forEach((editor) => {
+            const lang = editor.getAttribute('data-lang') || 'plaintext';
+            const theme = editor.getAttribute('data-theme') || 'vs-dark';
+            const readOnly = editor.getAttribute('data-readonly') || 'false';
+            const height = editor.getAttribute('data-height') || '300px';
+            const rawOptions = editor.getAttribute('data-options') || '{}';
+            let options = {};
+            try {
+                // decode HTML entities (e.g. &quot;) produced by server-side escaping
+                const decoded = new DOMParser().parseFromString(rawOptions, 'text/html').documentElement.textContent || rawOptions;
+                options = JSON.parse(decoded || '{}');
+            }
+            catch (e) {
+                try {
+                    // fallback: maybe server used encodeURIComponent
+                    options = JSON.parse(decodeURIComponent(rawOptions));
+                }
+                catch (e2) {
+                    console.warn('MonacoEditor: failed to parse data-options, using empty options', rawOptions, e2);
+                    options = {};
+                }
+            }
+            this.createEditor(editor, lang, theme, Boolean(readOnly), height, options);
+        });
+        this.updateEditorLayout();
+    };
+    loadMonaco = () => {
+        if (typeof window.hexo_monaco === 'undefined') {
+            const loader = document.createElement('script');
+            loader.src = 'https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js';
+            loader.onload = () => {
+                window.require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs' } });
+                window.require(['vs/editor/editor.main'], () => {
+                    window.hexo_monaco = true; // prevent loading multiple times
+                    this.findEditor();
+                });
+            };
+            loader.onerror = () => {
+                console.error('Failed to load Monaco Editor loader script.');
+            };
+            document.body.appendChild(loader);
+        }
+        else {
+            this.findEditor();
+        }
+    };
+    constructor() {
+        this.loadMonaco();
+        document.addEventListener('pjax:success', this.loadMonaco);
+        window.addEventListener('hexo-blog-decrypt', this.loadMonaco);
+        window.addEventListener('resize', this.updateEditorLayout);
+    }
+}
+;
+let monaco_editor = new MonacoEditor();
 class Scroll {
     scrolling = 0;
     getingtop = false;
